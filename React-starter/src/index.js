@@ -1,26 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-class TotalBalance extends React.Component{
-  render(){
-    return(
-      <h1>Total Balance: {parseInt(this.props.savings) + parseInt(this.props.checking)}</h1>
-    )
+class BankAccount extends React.Component {
+  state = {
+    savings: 300,
+    checking: 400
   }
-}
-
-class BankAccounts extends React.Component{
   render(){
     return(
       <div>
-        <TotalBalance checking = {this.props.checking} savings={this.props.savings}/>
+        <h2>Savings: {this.state.savings}</h2>
+        <h2>Savings: {this.state.checking}</h2>
+        <h2>Total Balance: {this.state.savings + this.state.checking}</h2>
       </div>
     )
   }
 }
 
+
 ReactDOM.render(
-  <BankAccounts savings = '100' checking = '300'/>
+<BankAccount/>
   , document.getElementById('root')
 );
