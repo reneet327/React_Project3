@@ -1,23 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-let key = 0;
 
-const todo1 = 'eat lunch';
-const todo2 = 'make the bed';
-const todo3 = 'code';
-const todos = [todo1, todo2, todo3];
-const todoItems = todos.map(todo => <li key={key++}>{todo}</li> );
+class TotalBalance extends React.Component{
+  render(){
+    return(
+      <h1>Total Balance: {parseInt(this.props.savings) + parseInt(this.props.checking)}</h1>
+    )
+  }
+}
 
-function todoList(td){
-  return(
-    <ul>
-      {td}
-    </ul>
-  )
+class BankAccounts extends React.Component{
+  render(){
+    return(
+      <div>
+        <TotalBalance checking = {this.props.checking} savings={this.props.savings}/>
+      </div>
+    )
+  }
 }
 
 ReactDOM.render(
-  todoList(todoItems)
+  <BankAccounts savings = '100' checking = '300'/>
   , document.getElementById('root')
 );
