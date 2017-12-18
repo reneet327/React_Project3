@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Connected extends React.Component {
-  render() {
-    return (
-      <div>
-        <Name firstName={this.props.firstName} lastName={this.props.lastName} /> is {this.props.status}
-      </div>
-    );
-  }
+let key = 0;
+
+const todo1 = 'eat lunch';
+const todo2 = 'make the bed';
+const todo3 = 'code';
+const todos = [todo1, todo2, todo3];
+const todoItems = todos.map(todo => <li key={key++}>{todo}</li> );
+
+function todoList(td){
+  return(
+    <ul>
+      {td}
+    </ul>
+  )
 }
 
 ReactDOM.render(
-  <Connected firstName="Margaret" lastName="Hamilton" status="Connected" />
-  document.getElementById('root')
+  todoList(todoItems)
+  , document.getElementById('root')
 );
